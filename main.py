@@ -104,7 +104,7 @@ with st.form("wire_form"):
         c2 = cols[2].text_input("", key=f"c2_{i}")
         p2 = cols[3].text_input("", key=f"p2_{i}")
         name = cols[4].text_input("", key=f"name_{i}")
-        length = cols[5].number_input("", min_value=0, step=1, key=f"len_{i}")
+        length = cols[5].text_input("", key=f"len_{i}")
         color = cols[6].selectbox(
             "",
             options=color_options,
