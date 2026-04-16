@@ -49,7 +49,7 @@ cross_section_options = sorted(
     {
         float(str(x).replace(",", "."))
         for x in cross_section_options
-        if float(str(x).replace(",", ".")) <= 4
+        if 0.75 <= float(str(x).replace(",", ".")) <= 4
     }
 )
 
