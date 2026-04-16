@@ -38,12 +38,23 @@ cross_section_options = (
     .astype(str)
     .str.strip()
     .loc[lambda x: x != ""]
-    .unique()
     .tolist()
 )
 
-color_options = sorted(color_options)
-cross_section_options = sorted(cross_section_options)
+# spalvos
+color_options = sorted(set(color_options))
+
+# kvadratūra -> skaičius, tik iki 4 mm²
+cross_section_options = sorted(
+    {
+        float(str(x).replace(",", "."))
+        for x in cross_section_options
+        if float(str(x).replace(",", ".")) <= 4
+    }
+)
+
+# jei nori rodyti kaip tekstą selectbox'e
+cross_section_options = [str(x).replace(".0", "") for x in cross_section_options]
 
 if "rows" not in st.session_state:
     st.session_state.rows = 2
