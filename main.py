@@ -1,5 +1,15 @@
 import streamlit as st
 
+st.markdown("""
+    <style>
+    div[data-testid="stTextInput"] {
+        margin-bottom: -10px;
+    }
+    div[data-testid="stNumberInput"] {
+        margin-bottom: -10px;
+    }
+    </style>
+""", unsafe_allow_html=True)
 st.set_page_config(page_title="Wire-set", layout="wide")
 
 st.title("Wire-set")
@@ -13,9 +23,9 @@ with st.form("wire_form"):
 
     # Viršutinė antraščių eilė
     top = st.columns(9)
-    top[0].markdown("**Komponentas 1**")
+    top[0].markdown("**    Komponentas 1**")
     top[1].markdown("")
-    top[2].markdown("**Komponentas 2**")
+    top[2].markdown("**    Komponentas 2**")
     top[3].markdown("")
     top[4].markdown("**Laido pav.**")
     top[5].markdown("**Ilgis (mm)**")
