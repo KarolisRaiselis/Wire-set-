@@ -3,7 +3,7 @@ import streamlit as st
 st.markdown("""
     <style>
     div[data-testid="stTextInput"] {
-        margin-bottom: -00px;
+        margin-bottom: -10px;
     }
     div[data-testid="stNumberInput"] {
         margin-bottom: -30px;
