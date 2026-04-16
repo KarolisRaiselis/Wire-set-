@@ -1,20 +1,19 @@
 import streamlit as st
 
+st.set_page_config(page_title="Wire-set", layout="wide")
+
 st.markdown("""
 <style>
-/* mažina tarpą po header */
 div[data-testid="stMarkdownContainer"] p {
     margin-bottom: 2px;
 }
 
-/* mažina tarpą tarp input eilučių */
 div[data-testid="stTextInput"],
 div[data-testid="stNumberInput"] {
     margin-bottom: -30px;
 }
 </style>
 """, unsafe_allow_html=True)
-st.set_page_config(page_title="Wire-set", layout="wide")
 
 st.title("Wire-set")
 st.subheader("Laidų suvedimas")
@@ -24,20 +23,27 @@ if "rows" not in st.session_state:
 
 with st.form("wire_form"):
     wires = []
-# 🔹 Viršutinė eilė (su apjungimu)
-top = st.columns([2, 2, 1, 1, 1, 1, 1])
 
-with top[0]:
-    st.markdown("<div style='text-align:center'><b>Komponentas 1</b></div>", unsafe_allow_html=True)
+    # Viršutinė antraščių eilė
+    top = st.columns([2, 2, 1, 1, 1, 1, 1])
 
-with top[1]:
-    st.markdown("<div style='text-align:center'><b>Komponentas 2</b></div>", unsafe_allow_html=True)
+    with top[0]:
+        st.markdown(
+            "<div style='text-align:center'><b>Komponentas 1</b></div>",
+            unsafe_allow_html=True
+        )
 
-top[2].markdown("**Laido pav.**")
-top[3].markdown("**Ilgis (mm)**")
-top[4].markdown("**Spalva**")
-top[5].markdown("**Kvadratūra**")
-top[6].markdown("**Projektas**")
+    with top[1]:
+        st.markdown(
+            "<div style='text-align:center'><b>Komponentas 2</b></div>",
+            unsafe_allow_html=True
+        )
+
+    top[2].markdown("**Laido pav.**")
+    top[3].markdown("**Ilgis (mm)**")
+    top[4].markdown("**Spalva**")
+    top[5].markdown("**Kvadratūra**")
+    top[6].markdown("**Projektas**")
 
     # Apatinė antraščių eilė
     sub = st.columns(9)
@@ -76,9 +82,9 @@ top[6].markdown("**Projektas**")
             "cross_section": cross,
             "project": project,
         })
-    st.markdown("""
-    <div style="height:30px;"></div>
-    """, unsafe_allow_html=True)
+
+    st.markdown("<div style='height:30px;'></div>", unsafe_allow_html=True)
+
     left, mid, right = st.columns([6, 1, 1])
 
     with mid:
