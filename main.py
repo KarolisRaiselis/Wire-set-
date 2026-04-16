@@ -1,14 +1,18 @@
 import streamlit as st
 
 st.markdown("""
-    <style>
-    div[data-testid="stTextInput"] {
-        margin-bottom: -30px;
-    }
-    div[data-testid="stNumberInput"] {
-        margin-bottom: -30px;
-    }
-    </style>
+<style>
+/* mažina tarpą po header */
+div[data-testid="stMarkdownContainer"] p {
+    margin-bottom: 2px;
+}
+
+/* mažina tarpą tarp input eilučių */
+div[data-testid="stTextInput"],
+div[data-testid="stNumberInput"] {
+    margin-bottom: -15px;
+}
+</style>
 """, unsafe_allow_html=True)
 st.set_page_config(page_title="Wire-set", layout="wide")
 
