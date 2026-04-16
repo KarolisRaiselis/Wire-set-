@@ -43,7 +43,7 @@ cross_section_options = (
 )
 
 color_options = sorted(color_options)
-cross_section_options = sorted(cross_section_options, key=lambda x: float(x))
+cross_section_options = sorted(cross_section_options)
 
 if "rows" not in st.session_state:
     st.session_state.rows = 2
