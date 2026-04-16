@@ -3,10 +3,10 @@ import streamlit as st
 st.markdown("""
     <style>
     div[data-testid="stTextInput"] {
-        margin-bottom: -20px;
+        margin-bottom: -00px;
     }
     div[data-testid="stNumberInput"] {
-        margin-bottom: -10px;
+        margin-bottom: -30px;
     }
     </style>
 """, unsafe_allow_html=True)
