@@ -24,16 +24,15 @@ if "rows" not in st.session_state:
 
 with st.form("wire_form"):
     wires = []
-
- # 🔹 Viršutinė eilė (su apjungimu)
+# 🔹 Viršutinė eilė (su apjungimu)
 top = st.columns([2, 2, 1, 1, 1, 1, 1])
 
 with top[0]:
     st.markdown("<div style='text-align:center'><b>Komponentas 1</b></div>", unsafe_allow_html=True)
-    
+
 with top[1]:
     st.markdown("<div style='text-align:center'><b>Komponentas 2</b></div>", unsafe_allow_html=True)
-    
+
 top[2].markdown("**Laido pav.**")
 top[3].markdown("**Ilgis (mm)**")
 top[4].markdown("**Spalva**")
