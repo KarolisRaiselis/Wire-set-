@@ -18,6 +18,33 @@ div[data-testid="stNumberInput"] {
 st.title("Wire-set")
 st.subheader("Laidų suvedimas")
 
+import pandas as pd
+
+df = pd.read_csv("IEC_wirelibrary_tic elkas_V22.csv", sep=";")
+
+color_options = (
+    df["Color"]
+    .dropna()
+    .astype(str)
+    .str.strip()
+    .loc[lambda x: x != ""]
+    .unique()
+    .tolist()
+)
+
+cross_section_options = (
+    df["CrossSectionMM2"]
+    .dropna()
+    .astype(str)
+    .str.strip()
+    .loc[lambda x: x != ""]
+    .unique()
+    .tolist()
+)
+
+color_options = sorted(color_options)
+cross_section_options = sorted(cross_section_options, key=lambda x: float(x))
+
 if "rows" not in st.session_state:
     st.session_state.rows = 2
 
@@ -67,8 +94,17 @@ with st.form("wire_form"):
         p2 = cols[3].text_input("", key=f"p2_{i}")
         name = cols[4].text_input("", key=f"name_{i}")
         length = cols[5].number_input("", min_value=0, step=1, key=f"len_{i}")
-        color = cols[6].text_input("", key=f"color_{i}")
-        cross = cols[7].text_input("", key=f"cross_{i}")
+        color = cols[6].selectbox(
+            "",
+            options=color_options,
+            key=f"color_{i}"
+        )
+
+        cross = cols[7].selectbox(
+            "",
+            options=cross_section_options,
+            key=f"cross_{i}"
+        )
         project = cols[8].text_input("", key=f"proj_{i}")
 
         wires.append({
