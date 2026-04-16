@@ -10,7 +10,7 @@ div[data-testid="stMarkdownContainer"] p {
 /* mažina tarpą tarp input eilučių */
 div[data-testid="stTextInput"],
 div[data-testid="stNumberInput"] {
-    margin-bottom: -15px;
+    margin-bottom: -30px;
 }
 </style>
 """, unsafe_allow_html=True)
