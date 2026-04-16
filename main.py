@@ -1,27 +1,38 @@
-import tkinter as tk
-from tkinter import filedialog
-from processing import process_file
+import streamlit as st
 
-def select_file():
-    file_path = filedialog.askopenfilename(
-        title="Pasirink Excel failą",
-        filetypes=[("Excel files", "*.xlsx")]
-    )
-    
-    if file_path:
-        print("Pasirinktas failas:", file_path)
-        process_file(file_path)
+st.set_page_config(page_title="Wire-set", layout="wide")
 
-def main():
-    root = tk.Tk()
-    root.title("Wire-set")
+st.title("Wire-set")
+st.subheader("Laido duomenų suvedimas")
 
-    root.geometry("300x150")
+with st.form("wire_form"):
+    col1, col2 = st.columns(2)
 
-    btn = tk.Button(root, text="Pasirink Excel failą", command=select_file)
-    btn.pack(expand=True)
+    with col1:
+        component_1 = st.text_input("Komponentas 1")
+        point_1 = st.text_input("Komponento taškas 1")
+        wire_name = st.text_input("Laido pavadinimas")
+        color = st.text_input("Spalva")
 
-    root.mainloop()
+    with col2:
+        component_2 = st.text_input("Komponentas 2")
+        point_2 = st.text_input("Komponento taškas 2")
+        cross_section = st.text_input("Kvadratūra")
+        project = st.text_input("Projektas")
 
-if __name__ == "__main__":
-    main()
+    submitted = st.form_submit_button("Išsaugoti")
+
+if submitted:
+    wire_data = {
+        "component_1": component_1,
+        "point_1": point_1,
+        "component_2": component_2,
+        "point_2": point_2,
+        "wire_name": wire_name,
+        "color": color,
+        "cross_section": cross_section,
+        "project": project,
+    }
+
+    st.success("Duomenys išsaugoti")
+    st.write(wire_data)
