@@ -145,5 +145,24 @@ if add_row:
     st.rerun()
 
 if save:
-    st.success("Duomenys išsaugoti")
-    st.write(wires)
+    try:
+        result = generate_all_dds(wires)
+
+        st.success("Sugeneruoti abu DDS failai")
+
+        st.download_button(
+            label="Atsisiųsti Job.dds",
+            data=result["job_content"],
+            file_name="Job.dds",
+            mime="text/plain",
+        )
+
+        st.download_button(
+            label="Atsisiųsti Article.dds",
+            data=result["article_content"],
+            file_name="Article.dds",
+            mime="text/plain",
+        )
+
+    except Exception as e:
+        st.error(f"Klaida: {e}")
