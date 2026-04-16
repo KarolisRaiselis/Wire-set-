@@ -27,6 +27,7 @@ with st.form("wire_form"):
 
  # 🔹 Viršutinė eilė (su apjungimu)
 top = st.columns([2, 2, 1, 1, 1, 1, 1])
+
 with top[0]:
     st.markdown("<div style='text-align:center'><b>Komponentas 1</b></div>", unsafe_allow_html=True)
     
