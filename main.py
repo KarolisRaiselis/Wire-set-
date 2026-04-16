@@ -1,18 +1,30 @@
+import streamlit as st
+
+st.set_page_config(page_title="Wire-set", layout="wide")
+
+st.title("Wire-set")
+st.subheader("Laidų suvedimas")
+
+if "rows" not in st.session_state:
+    st.session_state.rows = 2
+
 with st.form("wire_form"):
+    wires = []
 
-    # 🔹 1 eilė (dideli headeriai)
-    top = st.columns([2, 2, 1, 1, 1, 1, 1])
+    # Viršutinė antraščių eilė
+    top = st.columns(9)
     top[0].markdown("**Komponentas 1**")
-    top[1].markdown("**Komponentas 2**")
-    top[2].markdown("")
-    top[3].markdown("**Laido pav.**")
-    top[4].markdown("**Ilgis (mm)**")
-    top[5].markdown("**Spalva**")
-    top[6].markdown("**Kvadratūra**")
-    top[7].markdown("**Projektas**")
+    top[1].markdown("")
+    top[2].markdown("**Komponentas 2**")
+    top[3].markdown("")
+    top[4].markdown("**Laido pav.**")
+    top[5].markdown("**Ilgis (mm)**")
+    top[6].markdown("**Spalva**")
+    top[7].markdown("**Kvadratūra**")
+    top[8].markdown("**Projektas**")
 
-    # 🔹 2 eilė (sub-headeriai)
-    sub = st.columns(8)
+    # Apatinė antraščių eilė
+    sub = st.columns(9)
     sub[0].markdown("Pav.")
     sub[1].markdown("Taškas")
     sub[2].markdown("Pav.")
@@ -21,12 +33,11 @@ with st.form("wire_form"):
     sub[5].markdown("")
     sub[6].markdown("")
     sub[7].markdown("")
+    sub[8].markdown("")
 
-    wires = []
-
-    # 🔹 Input eilutės
+    # Įvedimo eilutės
     for i in range(st.session_state.rows):
-        cols = st.columns(8)
+        cols = st.columns(9)
 
         c1 = cols[0].text_input("", key=f"c1_{i}")
         p1 = cols[1].text_input("", key=f"p1_{i}")
@@ -49,3 +60,19 @@ with st.form("wire_form"):
             "cross_section": cross,
             "project": project,
         })
+
+    left, mid, right = st.columns([6, 1, 1])
+
+    with mid:
+        add_row = st.form_submit_button("➕")
+
+    with right:
+        save = st.form_submit_button("💾 Išsaugoti")
+
+if add_row:
+    st.session_state.rows += 1
+    st.rerun()
+
+if save:
+    st.success("Duomenys išsaugoti")
+    st.write(wires)
