@@ -5,31 +5,36 @@ st.set_page_config(page_title="Wire-set", layout="wide")
 st.title("Wire-set")
 st.subheader("Laidų suvedimas")
 
-# 🔢 kiek eilučių turim
 if "rows" not in st.session_state:
     st.session_state.rows = 1
 
-# ➕ mygtukas pridėti eilutę
-if st.button("➕ Pridėti laidą"):
-    st.session_state.rows += 1
-
-# 🧾 forma
 with st.form("wire_form"):
+
+    # 🔹 Header (tik vieną kartą)
+    header = st.columns(8)
+    header[0].markdown("**Komponentas 1**")
+    header[1].markdown("**Taškas 1**")
+    header[2].markdown("**Komponentas 2**")
+    header[3].markdown("**Taškas 2**")
+    header[4].markdown("**Laido pav.**")
+    header[5].markdown("**Spalva**")
+    header[6].markdown("**Kvadratūra**")
+    header[7].markdown("**Projektas**")
+
     wires = []
 
+    # 🔹 Dinaminės eilutės
     for i in range(st.session_state.rows):
-        st.markdown(f"### Laidas {i+1}")
-
         cols = st.columns(8)
 
-        component_1 = cols[0].text_input("Komponentas 1", key=f"c1_{i}")
-        point_1 = cols[1].text_input("Taškas 1", key=f"p1_{i}")
-        component_2 = cols[2].text_input("Komponentas 2", key=f"c2_{i}")
-        point_2 = cols[3].text_input("Taškas 2", key=f"p2_{i}")
-        wire_name = cols[4].text_input("Laido pav.", key=f"name_{i}")
-        color = cols[5].text_input("Spalva", key=f"color_{i}")
-        cross_section = cols[6].text_input("Kvadratūra", key=f"cross_{i}")
-        project = cols[7].text_input("Projektas", key=f"proj_{i}")
+        component_1 = cols[0].text_input("", key=f"c1_{i}")
+        point_1 = cols[1].text_input("", key=f"p1_{i}")
+        component_2 = cols[2].text_input("", key=f"c2_{i}")
+        point_2 = cols[3].text_input("", key=f"p2_{i}")
+        wire_name = cols[4].text_input("", key=f"name_{i}")
+        color = cols[5].text_input("", key=f"color_{i}")
+        cross_section = cols[6].text_input("", key=f"cross_{i}")
+        project = cols[7].text_input("", key=f"proj_{i}")
 
         wires.append({
             "component_1": component_1,
@@ -42,8 +47,18 @@ with st.form("wire_form"):
             "project": project,
         })
 
-    submitted = st.form_submit_button("Išsaugoti visus")
+    # 🔹 Mygtukai apačioje dešinėje
+    col_left, col_right = st.columns([6, 2])
 
-if submitted:
+    with col_right:
+        add_row = st.form_submit_button("➕")
+        save = st.form_submit_button("💾 Išsaugoti")
+
+# 🔹 Veiksmai po submit
+if add_row:
+    st.session_state.rows += 1
+    st.rerun()
+
+if save:
     st.success("Duomenys išsaugoti")
     st.write(wires)
