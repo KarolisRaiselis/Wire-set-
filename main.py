@@ -23,9 +23,9 @@ with st.form("wire_form"):
 
     # Viršutinė antraščių eilė
     top = st.columns(9)
-    top[0].markdown("**    Komponentas 1**")
+    top[0].markdown("**Komponentas 1**")
     top[1].markdown("")
-    top[2].markdown("**    Komponentas 2**")
+    top[2].markdown("**Komponentas 2**")
     top[3].markdown("")
     top[4].markdown("**Laido pav.**")
     top[5].markdown("**Ilgis (mm)**")
@@ -70,7 +70,9 @@ with st.form("wire_form"):
             "cross_section": cross,
             "project": project,
         })
-
+    st.markdown("""
+    <div style="height:30px;"></div>
+    """, unsafe_allow_html=True)
     left, mid, right = st.columns([6, 1, 1])
 
     with mid:
