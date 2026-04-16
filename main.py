@@ -6,7 +6,7 @@ st.markdown("""
         margin-bottom: -20px;
     }
     div[data-testid="stNumberInput"] {
-        margin-bottom: -20px;
+        margin-bottom: -10px;
     }
     </style>
 """, unsafe_allow_html=True)
