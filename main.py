@@ -27,9 +27,9 @@ with st.form("wire_form"):
 
     # Viršutinė antraščių eilė
     top = st.columns(9)
-    top[0].markdown("<div style='text-align:center'><b>Komponentas 1</b></div>", unsafe_allow_html=True)
+    top[0].markdown("<div style='text-align:right'><b>Komponentas 1</b></div>", unsafe_allow_html=True)
     top[1].markdown("")
-    top[2].markdown("<div style='text-align:center'><b>Komponentas 2</b></div>", unsafe_allow_html=True)
+    top[2].markdown("<div style='text-align:right'><b>Komponentas 2</b></div>", unsafe_allow_html=True)
     top[3].markdown("")
     top[4].markdown("**Laido pav.**")
     top[5].markdown("**Ilgis (mm)**")
