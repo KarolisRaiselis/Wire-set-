@@ -59,7 +59,7 @@ cross_section_options = sorted(
 cross_section_options = [str(x).replace(".0", "") for x in cross_section_options]
 
 if "rows" not in st.session_state:
-    st.session_state.rows = 2
+    st.session_state.rows = 1
 
 with st.form("wire_form"):
     wires = []
